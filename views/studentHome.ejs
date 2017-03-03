@@ -1,0 +1,146 @@
+</html>
+<html lang="en">
+<title>Student Profile</title>
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <style media="screen">
+        * {
+            font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: bolder;
+        }
+        .row {
+            margin: 0;
+          }
+           .navbar-default {
+               height: 100px;
+               padding-top: 23px;
+               padding-left: 70px;
+               border: 0;
+               border-radius: 0 !important;
+               background: #2c3e50;
+           }
+           .navbar-default .navbar-brand {
+               text-transform: uppercase;
+               font-size: 2em;
+               text-decoration: none;
+               color: white;
+               transition: color 0.3s ease;
+               cursor: pointer;
+           }
+           .navbar-default .navbar-brand:hover {
+               color: #18bc9c;
+               transition: color 0.3s ease;
+           }
+           .card {
+               padding: 10px;
+               padding-top: 20px;
+               background: #18bc9c;
+               border: 1px #c8c3ff solid;
+               border-radius: 5px;
+               text-align: center;
+               margin: 10px 3% 1% 3%;
+               height: 190px;
+               width: calc(80% * (1/3));
+           }
+           .card .card-title {
+             color: #02695e;
+             font-size: 2em;
+             font-weight: bold;
+             text-transform: capitalize;
+         }
+         .card .card-link {
+             margin-top: 40px;
+             font-size: 1.1em;
+             font-weight: bold;
+             width: 90%;
+             border: 2px solid white;
+             color: white;
+             background: transparent;
+             transition: background-color 0.5s ease;
+         }
+         .card .card-link:hover {
+             color: #18bc9c;
+             background: white;
+             transition: background-color 0.5s ease;
+         }
+         .form-container {
+             height: 400px;
+             border-left: 1px solid gray;
+             padding-left: 30px;
+         }
+         .form-control {
+             width: 90%;
+         }
+     </style>
+ </head>
+
+ <body>
+     <nav class="navbar navbar-default">
+         <div class="container-fluid">
+              <a class="navbar-brand" href="#"><%= student.name %></a>
+              <a class="navbar-brand" href="#"> | </a>
+              <form class="navbar-header" method="POST" action="/portfolio">
+                <input name = "username" type="hidden" class="form-control" id="username" value="<%= student.username %>">
+                 <button type="submit" class="navbar-brand">PORTFOLIO</button>
+              </form>
+              <a class="navbar-brand" href="#"> | </a>
+              <form class="navbar-header" method="POST" action="/studentSummary">
+                 <button type="submit" class="navbar-brand">SUMMARY</button>
+              </form>
+              <a class="navbar-brand" href="#"> | </a>
+              <form class="navbar-header" method="POST" action="/logOut">
+                  <button type="submit" class="navbar-brand">LOG OUT</button>
+              </form>
+         </div>
+     </nav>
+     <div class="row">
+         <div class="col-xs-12 col-md-8">
+
+         </div>
+         <div class="col-xs-12 col-md-4">
+             <div class="form-container">
+                 <h3 style="margin-bottom:40px;">My Profile</h3>
+                 <form class="form">
+                     <div class="form-group">
+                         <label for="outputName">Name</label>
+                         <label name = "name" type="text" class="form-control" id="outputName"> <%= student.name %> </label>
+                     </div>
+                     <div class="form-group">
+                         <label for="outputUserName">User Name</label>
+                         <label name = "username" type="text" class="form-control" id="usename"> <%= student.username %></label>
+                     </div>
+                     <div class="form-group">
+                         <label for="outputEmail">Email</label>
+                         <label name = "email" type="text" class="form-control" id="outputEmail"> <%= student.email %> </label>
+                     </div>
+                     <div class="form-group">
+                         <label for="outputImage">Profile Picture</label>
+                         <img id="profilePic" src="<%= student.picture %>" alt="">
+                         <input type='file' />
+                         <img id="myImg" src="#" alt="your image" height="500" width="500"/>
+                     </div>
+                 </form>
+             </div>
+           </div>
+       </div>
+       <script>
+              $(function () {
+                $(":file").change(function () {
+                   if (this.files && this.files[0]) {
+                       var reader = new FileReader();
+                       reader.onload = imageIsLoaded;
+                       reader.readAsDataURL(this.files[0]);
+                   }
+                });
+              });
+
+              function imageIsLoaded(e) {
+                $('#myImg').attr('src', e.target.result);
+              };
+        </script>
+
+   </html>

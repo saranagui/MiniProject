@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Start</title>
+
+
+
+      <!--<link rel="stylesheet" href="style.css">!-->
+  <style  media='screen'>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Sans-serif;
+    background: #2c3e50;
+  }
+
+  #wrap {
+    margin: 0 auto 30px;
+  }
+
+  #regbar {
+    height: 67px;
+    background: #34495e;
+  }
+
+  #navthing {
+    margin-left: 50px;
+  }
+
+  h2 {
+    padding: 20px;
+    color: #ecf0f1;
+  }
+
+  fieldset {
+    border: none;
+  }
+
+  .login {
+    position: relative;
+    width: 350px;
+    display: none;
+  }
+
+  .arrow-up1 {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 15px solid #ECF0F1;
+    left: 10%;
+    position: absolute;
+    top: -10px;
+  }
+
+  .arrow-up2 {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 15px solid #ECF0F1;
+    left: 20%;
+    position: absolute;
+    top: -50px;
+  }
+
+  .formholder {
+    background: #ecf0f1;
+    width: 350px;
+    border-radius: 5px;
+    padding-top: 5px;
+  }
+  .formholder input[type="email"], .formholder input[type="password"], .formholder input[type="text"] {
+    padding: 7px 5px;
+    margin: 10px 0;
+    width: 96%;
+    display: block;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    -webkit-transition: 0.3s linear;
+    -moz-transition: 0.3s linear;
+    -o-transition: 0.3s linear;
+    transition: 0.3s linear;
+  }
+  .formholder input[type="email"]:focus, .formholder input[type="password"]:focus, .formholder input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0 0 1px 1px #1abc9c;
+  }
+
+  .formholder button[type="submit"] {
+    background: #1abc9c;
+    padding: 10px;
+    font-size: 20px;
+    display: block;
+    width: 100%;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+  }
+  .formholder button[type="submit"]:hover {
+    background: #1bc6a4;
+  }
+  .formholder input[id="forgotpass"] {
+    background: #ffb3b3;
+    padding: 10px;
+    font-size: 20px;
+    display: block;
+    width: 100%;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+  }
+  .formholder input[id="forgotpass"]:hover {
+    background: #ffcccc;
+  }
+
+  .randompad {
+    padding: 10px;
+  }
+
+  .green {
+    color: #1abc9c;
+  }
+
+  .navbar-default .navbar-brand {
+      text-transform: uppercase;
+      font-size: 2em;
+      text-decoration: none;
+      color: white;
+      transition: color 0.3s ease;
+      cursor: pointer;
+  }
+
+  a {
+    color: #ecf0f1;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #1abc9c;
+  }
+
+  </style>
+
+</head>
+
+<body>
+  <div id="wrap">
+  <div id="regbar">
+    <div id="navthing">
+      <form  method= 'POST' action="/visitorSummary">
+      <h2><a href="#" id="loginform">Login</a> | <a href="#" id="registerform">Register</a> | <button type="submit" class="navbar-brand" href="#" id="visitform"> Visit </button></h2>
+    </form>
+    <div class="login">
+      <div class="arrow-up1"></div>
+      <div class="formholder">
+        <form class="randompad" method="POST" onsubmit="return isLoginEmpty()" action="/authenticate">
+           <fieldset>
+             <label name="usernameOfUser">Username</label>
+             <input type="text" name="username" id="lusername" placeholder="username" />
+             <!--<label name="email">Email</label>
+             <input type="email" id="lemail" placeholder="example@example.com" />-->
+             <label name="password" >Password</label>
+             <input type="password" name="password" id="lpass" />
+             <!--<input type="submit" value="Login" onclick="isLoginEmpty();" method="POST" action="/authenticate"/>-->
+             <button type="submit" class="btn btn-default" onclick="isLoginEmpty();">Log in</button>
+             <input type="submit" id='forgotpass' value="Forgot Password?" onclick="isForgotPassEmpty();" />
+           </fieldset>
+        </form>
+      </div>
+    </div>
+    <div class="register">
+      <div class="arrow-up2"></div>
+      <div class="formholder">
+        <form class="randompad" method="POST" onsubmit="isRegisterEmpty()" action="/register">
+           <fieldset>
+             <label name="nameOfUser">Name</label>
+             <input type="text" name="name" id="rname" placeholder="please enter your name" />
+             <label name="username">Username</label>
+             <input type="text" name="username" id="rusername" placeholder="username" />
+             <label name="email">Email</label>
+             <input type="email" name="email" id="remail" placeholder="example@example.com" />
+             <label name="password">Password</label>
+             <input type="password"  name="password" id='rpass' />
+             <label name="password">Confirm Password</label>
+             <input type="password" name='confirm' id='rconfirmpass' />
+             <label for="InputImage">Profile Picture</label>
+             <input name = "picture" id='rpic' type="file" class="form-control" placeholder="Profile Picture">
+             <button type="submit" class="btn btn-default" onclick="isRegisterEmpty();">Submit</button>
+
+           </fieldset>
+        </form>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+  <script>
+  /*$('input[type="submit"]').mousedown(function(){
+    $(this).css('background', '#2ecc71');
+  });
+  $('input[type="submit"]').mouseup(function(){
+    $(this).css('background', '#1abc9c');
+  });
+
+  $('input[id="forgotpass"]').mousedown(function(){
+    $(this).css('background', '#ffb3b3');
+  });
+  $('input[id="forgotpass"]').mouseup(function(){
+    $(this).css('background', '#ffcccc');
+  });*/
+
+  $('#loginform').click(function(){
+    $('.login').fadeToggle('slow');
+    $(this).toggleClass('green');
+  });
+
+  $('#registerform').click(function(){
+    $('.register').fadeToggle('slow');
+    $(this).toggleClass('green');
+  });
+
+  $(document).mouseup(function (e)
+  {
+      var container = $(".login");
+
+      if (!container.is(e.target) // if the target of the click isn't the container...
+          && container.has(e.target).length === 0) // ... nor a descendant of the container
+      {
+          container.hide();
+          $('#loginform').removeClass('green');
+      }
+  });
+
+  $(document).mouseup(function (e)
+  {
+      var container = $(".register");
+
+      if (!container.is(e.target) // if the target of the click isn't the container...
+          && container.has(e.target).length === 0) // ... nor a descendant of the container
+      {
+          container.hide();
+          $('#registerform').removeClass('green');
+      }
+  });
+
+  function isLoginEmpty(){
+    if(document.getElementById('lusername').value == ""||document.getElementById('lpass').value == "")
+    {
+      alert("Please fill missing fields to log in!");
+      return false;
+    }
+    else
+      return true;
+  }
+
+  function isForgotPassEmpty(){
+    if(document.getElementById('lusername').value == "")
+    {
+      alert("Please enter your username! We'll send you a new password in a bit");
+      return false;
+    }
+    else
+      return true;
+  }
+
+  function isRegisterEmpty(){
+    if(document.getElementById('rname').value == ""||document.getElementById('rusername').value == ""||document.getElementById('remail').value == ""||document.getElementById('rpass').value == "")
+    {
+      alert("Please fill missing fields to register!");
+      return false;
+    }
+    else{
+      if(document.getElementById('rconfirmpass').value != document.getElementById('rpass').value)
+      {
+        alert("The password isnt confirmed!");
+        document.getElementById('rconfirmpass').focus();
+        return false;
+      }
+      else
+        return true;
+    }
+
+  }
+
+  </script>
+
+</body>
+</html>
