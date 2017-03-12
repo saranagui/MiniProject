@@ -55,7 +55,7 @@ mongoose.connection.on('connected', () => {
 
 //on Error
 mongoose.connection.on('error', (error) => {
-  console.log('database error: '+error);
+  console.log('database error: '+config.database);
 });
 
 ///mongoose.connect(DB_URI);
