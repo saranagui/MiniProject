@@ -18,7 +18,7 @@
     "ejs": "^2.5.6",
     "express": "^4.14.1",
     "mongoose": "^4.8.3",
-    "Bcryptjs": "*",
+    "bcryptjs": "*",
     "cors":"*",
     "jsonwebtoken":"*",
     "passport":"*",
