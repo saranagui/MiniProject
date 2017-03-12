@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server"
   },
+  "engines":{
+    "node": "6.10.0",
+    "npm" : "3.10.10"
+  },
   "author": "Sara Nagui",
   "license": "ISC",
   "dependencies": {
@@ -18,6 +22,6 @@
     "cors":"*",
     "jsonwebtoken":"*",
     "passport":"*",
-    "passport.jwt":"*"
+    "passport-jwt":"*"
   }
 }
