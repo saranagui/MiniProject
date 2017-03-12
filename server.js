@@ -64,6 +64,6 @@ mongoose.connection.on('error', () => {
 since we export it as Router*/
 
 //start the server
-app.listen(8080, function(){
+app.listen(process.env.PORT || 8080, function(){
   console.log("server is listening on port 8080");
 });
